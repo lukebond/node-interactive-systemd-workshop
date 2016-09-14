@@ -14,29 +14,32 @@ Available from Github in the form of markdown and can be served locally:
 $ git clone https://github.com/lukebond/node-interactive-systemd-workshop
 $ npm install
 $ npm start
-Workshop materials available at http://localhost:9000
 ```
 
-## How Will This Work?
+This will launch a browser window/tab with the docs, otherwise they can be
+found at [http://localhost:8000/workshop.md](http://localhost:8000/workshop.md).
 
-- Send me your public key
+## How Will This Workshop Work?
+
 - I'll give you a VM to use
 - Please don't do anything illegal with it!
 - Run the materials locally on your laptop
 - SSH into the VM and work through the exercises yourself
 - Ask me for help when you get stuck
+  - This is where the value is in the workshop so don't be shy!!
+  - Also feel free to pick my brain about anything you think I may be able to help with
 
 ## Workshop
 
 Deployment is a large subject. "Production" environments vary wildly.
 This workshop will focus on Linux, process monitoring and on systemd.
-It might be subtitled "how to use systemd instead of PM2".
-
-We'll set up a basic Node.js sample app that talks to Redis using systemd.
+It could perhaps be subtitled "how to use systemd instead of PM2".
 
 The main goal of this workshop is to show you how to implement the basic
 process monitoring, logging and port-sharing features of PM2 using "plain old
 Linux" (systemd and a few simple tools).
+
+We'll set up a basic Node.js sample app that talks to Redis using systemd.
 
 This means the following:
 
@@ -65,7 +68,7 @@ SSH into the VM.
 Ensure Node.js, Redis and Balance are present, and that you have `sudo` access.
 
 ```
-$ which node redis balance > /dev/null 2>1 && echo 'Okay' || echo 'Not okay'
+$ which node redis-server balance > /dev/null 2>1 && echo 'Okay' || echo 'Not okay'
 $ sudo -v
 ```
 
