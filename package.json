@@ -1,0 +1,23 @@
+{
+  "name": "node-interactive-systemd-workshop",
+  "version": "1.0.0",
+  "description": "Materials for Node + systemd workshop at Node Interactive EU Amsterdam 2016",
+  "main": "index.js",
+  "dependencies": {
+    "markserv": "^0.0.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "markserv -f workshop.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukebond/node-interactive-systemd-workshop.git"
+  },
+  "author": "Luke Bond <luke.n.bond@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukebond/node-interactive-systemd-workshop/issues"
+  },
+  "homepage": "https://github.com/lukebond/node-interactive-systemd-workshop#readme"
+}
