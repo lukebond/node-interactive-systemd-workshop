@@ -448,6 +448,11 @@ ExecStart=/usr/bin/balance -f 9000 127.0.0.1:9001 127.0.0.1:9002 127.0.0.1:9003
 
 [Install]
 WantedBy=multi-user.target
+$ ps -ef | grep balance
+ubuntu    3648  3061  0 12:30 pts/0    00:00:00 balance -f 9000 127.0.0.1:9001 127.0.0.1:9002 127.0.0.1:9003
+ubuntu    4014  3061  0 12:36 pts/0    00:00:00 grep --color=auto balance
+$ sudo kill -9 3648
+[1]+  Killed                  balance -f 9000 127.0.0.1:900{1,2,3}
 $ systemctl daemon-reload
 $ systemctl enable balance
 $ systemctl start balance
