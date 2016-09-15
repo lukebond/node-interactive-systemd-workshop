@@ -1,17 +1,16 @@
 # Node Interactive 2016 - Amsterdam
 
-__Deploying Node.js to Production__
+__Deploying Node.js to Production using Plain Old Linux - Luke Bond__
 
-Luke Bond
-@lukeb0nd
-luke.n.bond@gmail.com
+- __t:__ @lukeb0nd
+- __e:__ luke.n.bond@gmail.com
 
 ## Materials
 
 Available from Github in the form of markdown and can be served locally:
 
 ```
-$ git clone https://github.com/lukebond/node-interactive-systemd-workshop
+$ git clone https://github.com/lukebond/node-interactive-systemd-workshop.git
 $ npm install
 $ npm start
 ```
@@ -19,10 +18,14 @@ $ npm start
 This will launch a browser window/tab with the docs, otherwise they can be
 found at [http://localhost:8000/workshop.md](http://localhost:8000/workshop.md).
 
+Feedback on this workshop will be gratefully received!! Contact details are above.
+
 ## How Will This Workshop Work?
 
 - I'll give you a VM to use
-- Please don't do anything illegal with it!
+  - Email me at luke.n.bond@gmail.com and I'll give you access details for one
+  - Please don't do anything illegal with it!
+  - I'll tear it down at the end of the workshop (sorry!!)
 - Run the materials locally on your laptop
 - SSH into the VM and work through the exercises yourself
 - Ask me for help when you get stuck
@@ -33,7 +36,7 @@ found at [http://localhost:8000/workshop.md](http://localhost:8000/workshop.md).
 
 Deployment is a large subject. "Production" environments vary wildly.
 This workshop will focus on Linux, process monitoring and on systemd.
-It could perhaps be subtitled "how to use systemd instead of PM2".
+It could perhaps be subtitled "how to do what PM2 does with systemd".
 
 The main goal of this workshop is to show you how to implement the basic
 process monitoring, logging and port-sharing features of PM2 using "plain old
@@ -62,28 +65,30 @@ Why learn these things instead of just using PM2?
 - It's easier than you think; if you use PM2 because it's easy, you'll be
   surprised how easy this is!
 
-### 1. Access your VM and Pull the Sample App
+### 1. Access your VM and Sanity Check
 
 SSH into the VM.
 Ensure Node.js, Redis and Balance are present, and that you have `sudo` access.
+Also check that the demo app is there.
 
 ```
 $ which node redis-server balance > /dev/null 2>1 && echo 'Okay' || echo 'Not okay'
+Okay
 $ sudo -v
-```
-
-Pull the sample application from Github, installing it to /home/ubuntu/demo-api-redis
-
-```
 $ cd /home/ubuntu/demo-api-redis
 $ node index
 ^C
 ```
 
+If you get "Not okay", let me know!!
+
+(_Note:_ The app will fail because Redis isn't running- that's fine!)
+
 Some useful links to have open during the workshop:
 
-- `systemctl` - (https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units)
-- `journalctl` - (https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs)
+- [Article about systemctl](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units)
+- [Article about journalctl](https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs)
+- My [blog post](https://blog.codeship.com/running-node-js-linux-systemd/) on the same subject
 
 ### 2. Write a Basic Unit File and Run the Service
 
@@ -359,7 +364,7 @@ Wants=redis.service
 Environment=REDIS_HOST=localhost
 Environment=LISTEN_PORT=900%i
 User=luke
-WorkingDirectory=/home/luke/Development/demo-api-redis
+WorkingDirectory=/home/ubuntu/demo-api-redis
 ExecStart=/usr/bin/node index.js
 Restart=always
 RestartSec=500ms
@@ -506,3 +511,8 @@ Let's explore some basic system administration tasks with systemd's tooling.
   it will vary based on your application, environment and business. Hence
   discussion is encouraged!
 
+### THANKS!
+
+Thanks for attending my workshop, I hope you found it useful.
+
+Please provide feedback (positive or negative), it helps me improve!
